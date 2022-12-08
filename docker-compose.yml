@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  django_backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: django1
+    ports:
+      - 8000:8000 #first port is localhost port and second is docker file port
+    volumes:
+      - .:/ProjectMicroservice #all the file from here are connected to docker container everytime we change here 
+
+    depends_on:
+      - db  #this means the db container run first and then django1 container run
+
+  db:
+    image: postgres:latest
+    container_name: postgresdb
+    restart: always
+    environment:
+      - POSTGRES_DB=postgresdb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_HOST_AUTH_METHOD=trust
+
+    volumes:
+      - .dbdata:/var/lib/postgresql/data:rw
+
+    # ports:
+    #   - 5433:5432 #first is outer docker port ,second is docker container port
