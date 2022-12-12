@@ -18,13 +18,13 @@ services:
     container_name: postgresdb
     restart: always
     environment:
-      - POSTGRES_DB=postgresdb
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=microservicedb
+      - POSTGRES_USER=tanka
+      - POSTGRES_PASSWORD=tanka@123
       - POSTGRES_HOST_AUTH_METHOD=trust
 
     volumes:
-      - .dbdata:/var/lib/postgresql/data:rw
+      - .dbdata:/var/lib/postgresql
 
-    # ports:
-    #   - 5433:5432 #first is outer docker port ,second is docker container port
+    ports:
+      - 5433:5432 #first is outer docker port ,second is docker container port

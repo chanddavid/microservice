@@ -79,12 +79,14 @@ WSGI_APPLICATION = 'myproj.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
+    #first add the psycopg2_binary==2.9.3 in docker requirement.txt file and install the requirement file
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'HOST': 'db',
-        'NAME': 'postgresdb',
-        'USER': 'postgres',
-        'PASSWORD': 'password'
+        'NAME': 'microservicedb',
+        'USER': 'tanka',
+        'PASSWORD': 'tanka@123',
+        'PORT':'5432'
     }
 }
 
