@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.7'
 services:
   django_backend:
     build:
@@ -24,7 +24,7 @@ services:
       - POSTGRES_HOST_AUTH_METHOD=trust
 
     volumes:
-      - .dbdata:/var/lib/postgresql
+      - /home/david/Desktop/microservices/microservice/dbdata/:/var/lib/postgresql/data
 
     ports:
       - 5433:5432 #first is outer docker port ,second is docker container port
